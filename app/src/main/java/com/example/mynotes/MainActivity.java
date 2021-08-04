@@ -3,6 +3,7 @@ package com.example.mynotes;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -102,6 +103,17 @@ public class MainActivity extends PreferenceActivity {
             openFile(FILENAME);
             float fSize = Float.parseFloat(prefs.getString(
                     getString(R.string.pref_size), "20"));
+
+            String regular = prefs.getString(getString(R.string.pref_style), "");
+            int typeface = Typeface.NORMAL;
+
+            if (regular.contains("Полужирный"))
+                typeface += Typeface.BOLD;
+
+            if (regular.contains("Курсив"))
+                typeface += Typeface.ITALIC;
+
+            mEditText.setTypeface(null, typeface);
 
             mEditText.setTextSize(fSize);
         }

@@ -11,6 +11,14 @@
         android:key="@string/pref_size"
         android:summary="Устанавливает новый размер шрифта"
         android:title="Размер шрифта" />
+    <ListPreference
+        android:key="@string/pref_style"
+        android:title="Стиль для шрифта"
+        android:summary="Устанавливает стиль для шрифта"
+        android:defaultValue="1"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:dialogTitle="Выберите стиль для шрифта" />
 
 
 </PreferenceScreen>
