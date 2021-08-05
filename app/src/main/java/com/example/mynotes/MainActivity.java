@@ -7,9 +7,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -36,6 +38,21 @@ public class MainActivity extends PreferenceActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem item = menu.findItem(R.id.id_search);
+        SearchView sv = (SearchView)item.getActionView();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("MyLog","Query . " + query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyLog","text . " + newText);
+                return false;
+            }
+        });
         return true;
     }
 
